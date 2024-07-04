@@ -19,7 +19,7 @@
 						</li>
 
 					</ol>
-					<button class="btn btn-success btn-sm mt-3">Tambah Data Produk</button>
+					<a href="<?= base_url('Admin/cProduk/create') ?>" class="btn btn-success btn-sm mt-3">Tambah Data Produk</a>
 
 				</div>
 			</div>
@@ -43,69 +43,41 @@
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>First Name</th>
-											<th>Last Name</th>
-											<th>Username</th>
-											<th>Nickname</th>
+											<th>Nama Produk</th>
+											<th>Harga</th>
+											<th>Kategori Produk</th>
+											<th>Stok</th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>7</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
+										<?php
+										$no = 1;
+										foreach ($produk as $key => $value) {
+										?>
+											<tr>
+												<td><?= $no++ ?></td>
+												<td>
+													<img style="width: 100px;" src="<?= base_url('asset/foto-produk/' . $value->foto) ?>">
+													<h6 class="mt-4"><?= $value->nama_produk ?></h6>
+													<strong>Keterangan: </strong><?= $value->keterangan ?><br>
+													<strong>Deskripsi: </strong><?= $value->deskripsi ?>
+												</td>
+												<td>Rp. <?= number_format($value->harga)  ?></td>
+												<td><?= $value->kategori_produk ?></td>
+												<td><?= number_format($value->stok) ?></td>
+												<td> <a href="<?= base_url('Admin/cProduk/update/' . $value->id_produk) ?>" class="btn btn-flat flat-warning txt-warning waves-effect waves-light">
+														Perbaharui
+													</a>
+													<a href="<?= base_url('Admin/cProduk/delete/' . $value->id_produk) ?>" class="btn btn-flat flat-danger txt-danger waves-effect waves-light">
+														Hapus
+													</a>
+												</td>
+											</tr>
+										<?php
+										}
+										?>
+
 
 									</tbody>
 								</table>

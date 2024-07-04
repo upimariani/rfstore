@@ -19,7 +19,7 @@
 						</li>
 
 					</ol>
-					<button class="btn btn-success btn-sm mt-3">Tambah Data User</button>
+					<a href="<?= base_url('Admin/cUser/create') ?>" class="btn btn-success btn-sm mt-3">Tambah Data User</a>
 
 				</div>
 			</div>
@@ -36,6 +36,13 @@
 						<h5 class="card-header-text">Informasi User</h5>
 						<p>Akun user yang terlibat <code>admin dan pemilik</code></p>
 					</div>
+					<?php if ($this->session->userdata('success') != '') {
+					?>
+						<div class="alert alert-success" role="alert">
+							<?= $this->session->userdata('success') ?>
+						</div>
+					<?php
+					} ?>
 					<div class="card-block">
 						<div class="row">
 							<div class="col-sm-12 table-responsive">
@@ -43,69 +50,45 @@
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>First Name</th>
-											<th>Last Name</th>
+											<th>Nama User</th>
 											<th>Username</th>
-											<th>Nickname</th>
+											<th>Password</th>
+											<th>Level User</th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>1</td>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>7</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
+										<?php
+										$no = 1;
+										foreach ($user as $key => $value) {
+										?>
+											<tr>
+												<td><?= $no++ ?></td>
+												<td><?= $value->nama ?></td>
+												<td><?= $value->username ?></td>
+												<td><?= $value->password ?></td>
+												<td><?php if ($value->level_user == '1') {
+													?>
+														<span class="badge badge-success">Admin</span>
+													<?php
+													} else {
+													?>
+														<span class="badge badge-warning">Pemilik</span>
+													<?php
+													} ?>
+												</td>
+												<td> <a href="<?= base_url('Admin/cUser/update/' . $value->id_user) ?>" class="btn btn-flat flat-warning txt-warning waves-effect waves-light">
+														Perbaharui
+													</a>
+													<a href="<?= base_url('Admin/cUser/delete/' . $value->id_user) ?>" class="btn btn-flat flat-danger txt-danger waves-effect waves-light">
+														Hapus
+													</a>
+												</td>
+											</tr>
+										<?php
+										}
+										?>
+
 
 									</tbody>
 								</table>

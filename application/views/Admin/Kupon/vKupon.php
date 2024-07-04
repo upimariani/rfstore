@@ -19,7 +19,7 @@
 						</li>
 
 					</ol>
-					<button class="btn btn-success btn-sm mt-3">Tambah Data Kupon</button>
+					<a href="<?= base_url('Admin/cKupon/create') ?>" class="btn btn-success btn-sm mt-3">Tambah Data Kupon</a>
 
 				</div>
 			</div>
@@ -43,70 +43,20 @@
 									<thead>
 										<tr>
 											<th>#</th>
-											<th>First Name</th>
-											<th>Last Name</th>
-											<th>Username</th>
-											<th>Nickname</th>
+											<th>Nama Kupon</th>
+											<th>Deskripsi</th>
+											<th>Potongan Harga Transaksi</th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td>1</td>
-											<td>Mark</td>
-											<td>Otto</td>
-											<td>@mdo</td>
-											<td>Ducky</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
 										</tr>
-										<tr>
-											<td>2</td>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>7</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>Larry</td>
-											<td>the Bird</td>
-											<td>@twitter</td>
-											<td>Ducky</td>
-										</tr>
-
 									</tbody>
 								</table>
 							</div>

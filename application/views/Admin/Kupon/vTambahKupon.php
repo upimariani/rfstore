@@ -19,7 +19,6 @@
 						</li>
 
 					</ol>
-					<button class="btn btn-success btn-sm mt-3">Tambah Data Kupon</button>
 
 				</div>
 			</div>
@@ -32,26 +31,35 @@
 			<div class="col-lg-6">
 				<div class="card">
 					<div class="card-header">
-						<h5 class="card-header-text">Tooltips on textbox</h5>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+						<h5 class="card-header-text">Tambah Data Kupon</h5>
+						<p>Silahkan tambah data kupon transaksi jika diperlukan.</p>
 					</div>
 					<div class="card-block button-list">
 						<div class="md-group-add-on">
 							<span class="md-add-on">
-								<i class="icofont icofont-ui-user"></i>
+								<i class="icofont icofont-abacus"></i>
 							</span>
 							<div class="md-input-wrapper">
-								<input type="text" id="name" class="md-form-control" title="yourname" />
-								<label>Enter Your Name</label>
+								<input type="text" id="name" placeholder="Masukkan Nama Kupon" class="md-form-control" title="yourname" />
+								<label>Nama Kupon</label>
 							</div>
 						</div>
 						<div class="md-group-add-on">
 							<span class="md-add-on">
-								<i class="icofont icofont-ui-email"></i>
+								<i class="icofont icofont-pen"></i>
 							</span>
 							<div class="md-input-wrapper">
-								<input type="email" id="email" class="md-form-control" title="your email name must be 8-16 character long" />
-								<label>Enter Email</label>
+								<input type="text" id="name" placeholder="Masukkan Deskripsi" class="md-form-control" title="yourname" />
+								<label>Deskripsi</label>
+							</div>
+						</div>
+						<div class="md-group-add-on">
+							<span class="md-add-on">
+								<i class="icofont icofont-mathematical-alt-1"></i>
+							</span>
+							<div class="md-input-wrapper">
+								<input type="text" id="name" placeholder="Masukkan Potongan Harga Transaksi" class="md-form-control" title="yourname" />
+								<label>Potongan Harga Transaksi</label>
 							</div>
 						</div>
 						<button type="button" class="btn btn-primary waves-effect waves-light m-r-20" data-toggle="tooltip" data-placement="right" title="submit">Submit
