@@ -8,7 +8,6 @@ class mDiskon extends CI_Model
 		$this->db->select('*');
 		$this->db->from('diskon');
 		$this->db->join('produk', 'diskon.id_produk = produk.id_produk', 'left');
-
 		return $this->db->get()->result();
 	}
 	public function insert($data)

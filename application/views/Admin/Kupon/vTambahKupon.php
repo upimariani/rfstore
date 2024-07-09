@@ -34,37 +34,42 @@
 						<h5 class="card-header-text">Tambah Data Kupon</h5>
 						<p>Silahkan tambah data kupon transaksi jika diperlukan.</p>
 					</div>
-					<div class="card-block button-list">
-						<div class="md-group-add-on">
-							<span class="md-add-on">
-								<i class="icofont icofont-abacus"></i>
-							</span>
-							<div class="md-input-wrapper">
-								<input type="text" id="name" placeholder="Masukkan Nama Kupon" class="md-form-control" title="yourname" />
-								<label>Nama Kupon</label>
+					<form action="<?= base_url('Admin/cKupon/create') ?>" method="POST">
+						<div class="card-block button-list">
+							<div class="md-group-add-on">
+								<span class="md-add-on">
+									<i class="icofont icofont-abacus"></i>
+								</span>
+								<div class="md-input-wrapper">
+									<input type="text" id="name" name="nama" placeholder="Masukkan Nama Kupon" class="md-form-control" title="yourname" />
+									<?= form_error('nama', '<small class="text-danger">', '</small>') ?>
+									<label>Nama Kupon</label>
+								</div>
 							</div>
-						</div>
-						<div class="md-group-add-on">
-							<span class="md-add-on">
-								<i class="icofont icofont-pen"></i>
-							</span>
-							<div class="md-input-wrapper">
-								<input type="text" id="name" placeholder="Masukkan Deskripsi" class="md-form-control" title="yourname" />
-								<label>Deskripsi</label>
+							<div class="md-group-add-on">
+								<span class="md-add-on">
+									<i class="icofont icofont-pen"></i>
+								</span>
+								<div class="md-input-wrapper">
+									<input type="text" id="name" name="deskripsi" placeholder="Masukkan Deskripsi" class="md-form-control" title="yourname" />
+									<?= form_error('deskripsi', '<small class="text-danger">', '</small>') ?>
+									<label>Deskripsi</label>
+								</div>
 							</div>
-						</div>
-						<div class="md-group-add-on">
-							<span class="md-add-on">
-								<i class="icofont icofont-mathematical-alt-1"></i>
-							</span>
-							<div class="md-input-wrapper">
-								<input type="text" id="name" placeholder="Masukkan Potongan Harga Transaksi" class="md-form-control" title="yourname" />
-								<label>Potongan Harga Transaksi</label>
+							<div class="md-group-add-on">
+								<span class="md-add-on">
+									<i class="icofont icofont-mathematical-alt-1"></i>
+								</span>
+								<div class="md-input-wrapper">
+									<input type="text" id="name" name="potongan" placeholder="Masukkan Potongan Harga Transaksi" class="md-form-control" title="yourname" />
+									<?= form_error('potongan', '<small class="text-danger">', '</small>') ?>
+									<label>Potongan Harga Transaksi</label>
+								</div>
 							</div>
+							<button type="submit" class="btn btn-primary waves-effect waves-light m-r-20" data-toggle="tooltip" data-placement="right" title="submit">Submit
+							</button>
 						</div>
-						<button type="button" class="btn btn-primary waves-effect waves-light m-r-20" data-toggle="tooltip" data-placement="right" title="submit">Submit
-						</button>
-					</div>
+					</form>
 				</div>
 				<!-- end of card -->
 			</div>

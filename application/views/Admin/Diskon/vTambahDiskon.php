@@ -34,40 +34,49 @@
 						<h5 class="card-header-text">Tambah Data Diskon</h5>
 						<p>Silahkan tambah data diskon produk yang diperlukan.</p>
 					</div>
-					<div class="card-block button-list">
-						<div class="md-group-add-on">
-							<span class="md-add-on">
-								<i class="icofont icofont-barcode"></i>
-							</span>
-							<div class="md-input-wrapper">
-								<select class="md-form-control">
-									<option value="">---Pilih Produk Diskon---</option>
-									<option value="2">Pemilik</option>
-								</select>
-								<label>Nama Produk</label>
+					<form action="<?= base_url('Admin/cDiskon/create') ?>" method="POST">
+						<div class="card-block button-list">
+							<div class="md-group-add-on">
+								<span class="md-add-on">
+									<i class="icofont icofont-barcode"></i>
+								</span>
+								<div class="md-input-wrapper">
+									<select name="produk" class="md-form-control">
+										<option value="">---Pilih Produk Diskon---</option>
+										<?php
+										foreach ($produk as $key => $value) {
+										?>
+											<option value="<?= $value->id_produk ?>"><?= $value->nama_produk ?></option>
+										<?php
+										}
+										?>
+
+									</select>
+									<label>Nama Produk</label>
+								</div>
 							</div>
-						</div>
-						<div class="md-group-add-on">
-							<span class="md-add-on">
-								<i class="icofont icofont-marker"></i>
-							</span>
-							<div class="md-input-wrapper">
-								<input type="text" id="name" class="md-form-control" placeholder="Masukkan Nama Diskon" title="yourname" />
-								<label>Nama Diskon</label>
+							<div class="md-group-add-on">
+								<span class="md-add-on">
+									<i class="icofont icofont-marker"></i>
+								</span>
+								<div class="md-input-wrapper">
+									<input type="text" name="nama" id="name" class="md-form-control" placeholder="Masukkan Nama Diskon" title="yourname" />
+									<label>Nama Diskon</label>
+								</div>
 							</div>
-						</div>
-						<div class="md-group-add-on">
-							<span class="md-add-on">
-								<i class="icofont icofont-mathematical-alt-1"></i>
-							</span>
-							<div class="md-input-wrapper">
-								<input type="text" id="name" class="md-form-control" placeholder="Masukkan Besar Diskon" title="yourname" />
-								<label>Besar Diskon</label>
+							<div class="md-group-add-on">
+								<span class="md-add-on">
+									<i class="icofont icofont-mathematical-alt-1"></i>
+								</span>
+								<div class="md-input-wrapper">
+									<input type="text" name="diskon" id="name" class="md-form-control" placeholder="Masukkan Besar Diskon" title="yourname" />
+									<label>Besar Diskon</label>
+								</div>
 							</div>
+							<button type="submit" class="btn btn-primary waves-effect waves-light m-r-20" data-toggle="tooltip" data-placement="right" title="submit">Submit
+							</button>
 						</div>
-						<button type="button" class="btn btn-primary waves-effect waves-light m-r-20" data-toggle="tooltip" data-placement="right" title="submit">Submit
-						</button>
-					</div>
+					</form>
 				</div>
 				<!-- end of card -->
 			</div>

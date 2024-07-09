@@ -36,6 +36,13 @@
 						<h5 class="card-header-text">Informasi Produk</h5>
 						<p>Produk yang tersedia di <code>RFSTORE</code></p>
 					</div>
+					<?php if ($this->session->userdata('success') != '') {
+					?>
+						<div class="alert alert-success" role="alert">
+							<?= $this->session->userdata('success') ?>
+						</div>
+					<?php
+					} ?>
 					<div class="card-block">
 						<div class="row">
 							<div class="col-sm-12 table-responsive">

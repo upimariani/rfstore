@@ -36,6 +36,13 @@
 						<h5 class="card-header-text">Informasi Diskon</h5>
 						<p>Diskon yang tersedia di <code>RFSTORE</code></p>
 					</div>
+					<?php if ($this->session->userdata('success') != '') {
+					?>
+						<div class="alert alert-success" role="alert">
+							<?= $this->session->userdata('success') ?>
+						</div>
+					<?php
+					} ?>
 					<div class="card-block">
 						<div class="row">
 							<div class="col-sm-12 table-responsive">
@@ -50,13 +57,27 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-										</tr>
+										<?php
+										$no = 1;
+										foreach ($diskon as $key => $value) {
+										?>
+											<tr>
+												<td><?= $no++ ?></td>
+												<td><?= $value->nama_produk ?></td>
+												<td><?= $value->nama_diskon ?></td>
+												<td><?= $value->disc ?>%</td>
+												<td> <a href="<?= base_url('Admin/cDiskon/update/' . $value->id_diskon) ?>" class="btn btn-flat flat-warning txt-warning waves-effect waves-light">
+														Perbaharui
+													</a>
+													<a href="<?= base_url('Admin/cDiskon/delete/' . $value->id_diskon) ?>" class="btn btn-flat flat-danger txt-danger waves-effect waves-light">
+														Hapus
+													</a>
+												</td>
+											</tr>
+										<?php
+										}
+										?>
+
 
 									</tbody>
 								</table>
