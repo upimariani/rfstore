@@ -45,8 +45,26 @@
 						<i class="fa fa-star"></i> -->
 						<span>( Stok: <?= $produk->stok ?> )</span>
 					</div>
-					<div class="product__details__price">Rp. <?= number_format($produk->harga - ($produk->harga * ($produk->disc / 100)), 0)  ?>
-						<del><?= number_format($produk->harga) ?></del>
+					<div class="product__details__price">
+						<?php
+						if ($this->session->userdata('level') == '1') {
+						?>
+							RpRp. <?= number_format($produk->harga - ($produk->harga * ($produk->disc / 100)), 0)  ?>
+						<?php
+						} else {
+						?>
+							Rp. <?= number_format($produk->harga, 0)  ?>
+						<?php
+						}
+						?>
+						<?php
+						if ($produk->disc && $this->session->userdata('level') == '1') {
+						?>
+							<del>Rp. <?= number_format($produk->harga, 0)  ?></del>
+						<?php
+						}
+						?>
+
 					</div>
 					<p><?= $produk->deskripsi ?></p>
 

@@ -21,7 +21,12 @@ class cCart extends CI_Controller
 	public function add_to_cart($id)
 	{
 		$produk = $this->mCart->get_produk($id);
-		$hrg = $produk->harga - ($produk->harga * ($produk->perc / 100));
+		if ($this->session->userdata('level') == '1') {
+			$hrg = $produk->harga - ($produk->harga * ($produk->disc / 100));
+		} else {
+			$hrg = $produk->harga;
+		}
+		// echo $hrg;
 		$data = array(
 			'id' => $produk->id_produk,
 			'name' => $produk->nama_produk,

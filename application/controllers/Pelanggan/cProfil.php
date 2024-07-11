@@ -24,9 +24,9 @@ class cProfil extends CI_Controller
 	public function update_profil()
 	{
 		$data = array(
-			'nm_pel' => $this->input->post('nama'),
+			'nama_pelanggan' => $this->input->post('nama'),
 			'alamat' => $this->input->post('alamat'),
-			'no_tlpon' => $this->input->post('no_hp'),
+			'no_hp' => $this->input->post('no_hp'),
 			'username' => $this->input->post('username'),
 			'password' => $this->input->post('password')
 		);

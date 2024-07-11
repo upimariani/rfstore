@@ -94,9 +94,20 @@
 						<div class="product__item__text">
 							<h6><a href="#"><?= $value->nama_produk ?></a></h6>
 
-							<div class="product__price">Rp. <?= number_format($value->harga - ($value->harga * ($value->disc / 100)), 0)  ?>
+							<div class="product__price">
 								<?php
-								if ($value->disc) {
+								if ($this->session->userdata('level') == '1') {
+								?>
+									Rp. <?= number_format($value->harga - ($value->harga * ($value->disc / 100)), 0); ?>
+								<?php
+								} else {
+								?>
+									Rp. <?= number_format($value->harga); ?>
+								<?php
+								}
+								?>
+								<?php
+								if ($value->disc && $this->session->userdata('level') == '1') {
 								?>
 									<del>Rp. <?= number_format($value->harga, 0)  ?></del>
 								<?php
@@ -130,10 +141,10 @@
 					?>
 						<div class="banner__item">
 							<div class="banner__text">
-								<span>Roti</span>
-								<h1>ZNJ Bakery</h1>
-								<p><?= $value->nm_pel ?> | <?= $value->tgl_po ?></p>
-								<a href="#"><?= $value->isi_kritik_saran ?></a>
+								<span>STYLE</span>
+								<h1>RFSTORE</h1>
+								<p><?= $value->nama_pelanggan ?> | <?= $value->tgl_transaksi ?></p>
+								<a href="#"><?= $value->review ?></a>
 							</div>
 						</div>
 					<?php

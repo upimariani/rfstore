@@ -29,14 +29,14 @@ class cLogin extends CI_Controller
 			if ($data) {
 				$id_pelanggan = $data->id_pelanggan;
 				$nama = $data->nama_pelanggan;
-				// $level = $data->level_member;
+				$level = $data->level_member;
 				// $stat_reward = $data->stat_reward;
 
 
 				$array = array(
 					'id_pelanggan' => $id_pelanggan,
 					'nama' => $nama,
-					// 'level' => $level,
+					'level' => $level,
 					// 'reward' => $stat_reward
 				);
 				$this->session->set_userdata($array);

@@ -43,7 +43,7 @@
 							</li>
 							<li>
 								<h6><i class="fa fa-phone"></i> Phone</h6>
-								<p><span><?= $pelanggan->no_tlpon ?></span></p>
+								<p><span><?= $pelanggan->no_hp ?></span></p>
 							</li>
 							<li>
 								<h6><i class="fa fa-headphones"></i> Akun</h6>
@@ -56,10 +56,10 @@
 						<form action="<?= base_url('Pelanggan/cProfil/update_profil') ?>" method="POST">
 							<div class="row">
 								<div class="col-lg-6">
-									<input type="text" name="nama" value="<?= $pelanggan->nm_pel ?>" placeholder="Name">
+									<input type="text" name="nama" value="<?= $pelanggan->nama_pelanggan ?>" placeholder="Name">
 								</div>
 								<div class="col-lg-6">
-									<input type="text" name="no_hp" value="<?= $pelanggan->no_tlpon ?>" placeholder="No Telepon">
+									<input type="text" name="no_hp" value="<?= $pelanggan->no_hp ?>" placeholder="No Telepon">
 								</div>
 							</div>
 							<textarea name="alamat" placeholder="Message"><?= $pelanggan->alamat ?></textarea>

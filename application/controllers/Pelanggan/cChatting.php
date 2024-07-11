@@ -34,7 +34,7 @@ class cChatting extends CI_Controller
 		} else {
 			$data = array(
 				'id_pelanggan' => $this->session->userdata('id_pelanggan'),
-				'id_user' => '1',
+
 				'pelanggan_send' => $this->input->post('pesan'),
 
 			);

@@ -113,23 +113,36 @@
 			<?php
 			}
 			?>
-			<?php
-			if ($kritik_saran->review == null && $kritik_saran->stat_transaksi == '4') {
-			?>
-				<div class="col-lg-4 offset-lg-2">
-					<?php echo form_open_multipart('Pelanggan/cPesananSaya/kritik_saran/' . $transaksi['transaksi']->id_transaksi); ?>
-					<div class="cart__total__procced">
-						<h6>Kritik dan Saran</h6>
-						<textarea name="kritik_saran" class="form-control mb-4" required></textarea>
-						<button type="submit" class="btn btn-primary primary-btn">Kirim Kritik Saran</button>
-					</div>
-					</form>
-				</div>
-			<?php
-			}
-			?>
-		</div>
 
+
+
+		</div>
+		<?php
+		if ($kritik_saran->review == null && $kritik_saran->stat_transaksi == '4') {
+		?>
+			<h6>Kritik dan Saran</h6>
+			<div id='rate-0'>
+				<?php echo form_open_multipart('Pelanggan/cPesananSaya/kritik_saran/' . $transaksi['transaksi']->id_transaksi); ?>
+				<input type='hidden' name='rating' id='rating'>
+				<?php echo "
+                                                        <ul class='star' onMouseOut=\"resetRating('0')\">"; //untuk menampilan value dari bintang
+				for ($i = 1; $i <= 5; $i++) {
+					if ($i <= 0) {
+						$selected = "selected";
+					} else {
+						$selected = "";
+					}
+					echo "<li class='select' class='$selected' onmouseover=\" highlightStar(this,0)\" onmouseout=\"removeHighlight(0);\" onClick=\"addRating(this,0)\">&#9733;</li>";
+				}
+				echo "<ul>
+                                                    </div> "; ?>
+				<textarea rows="3" name="kritik_saran" class="form-control" placeholder="Masukkan komentar anda..." required></textarea>
+				<button type="submit" class="btn btn-primary primary-btn">Kirim Kritik Saran</button>
+				</form>
+			</div>
+		<?php
+		}
+		?>
 	</div>
 </section>
 <!-- Shop Cart Section End -->

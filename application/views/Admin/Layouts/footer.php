@@ -40,21 +40,11 @@
 
 <script src="<?= base_url('asset/') ?>datatables/datatables.min.js"></script>
 <script>
-	$('#myTable').DataTable({
+	$('.table').DataTable({
 		select: true
 	});
 </script>
-<script>
-	var $window = $(window);
-	var nav = $('.fixed-button');
-	$window.scroll(function() {
-		if ($window.scrollTop() >= 200) {
-			nav.addClass('active');
-		} else {
-			nav.removeClass('active');
-		}
-	});
-</script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 

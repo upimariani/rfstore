@@ -35,6 +35,11 @@ class cLogin extends CI_Controller
 			}
 		}
 	}
+	public function logout()
+	{
+		$this->session->set_flashdata('success', 'Anda berhasil logout!');
+		redirect('cLogin');
+	}
 }
 
 /* End of file cLogin.php */

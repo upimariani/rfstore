@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2024 at 03:54 PM
+-- Generation Time: Jul 11, 2024 at 08:55 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -30,10 +30,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `chatting` (
   `id_chatting` int(11) NOT NULL,
+  `id_pelanggan` int(11) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `pelanggan_send` text NOT NULL,
-  `admin_send` text NOT NULL
+  `admin_send` text NOT NULL,
+  `stat_read` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chatting`
+--
+
+INSERT INTO `chatting` (`id_chatting`, `id_pelanggan`, `time`, `pelanggan_send`, `admin_send`, `stat_read`) VALUES
+(1, 1, '2024-07-11 06:54:29', 'halo', '', 0);
 
 -- --------------------------------------------------------
 
@@ -48,6 +57,13 @@ CREATE TABLE `detail_tran` (
   `qty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `detail_tran`
+--
+
+INSERT INTO `detail_tran` (`id_detail`, `id_transaksi`, `id_produk`, `qty`) VALUES
+(1, 1, 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -58,8 +74,15 @@ CREATE TABLE `diskon` (
   `id_diskon` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
   `nama_diskon` varchar(125) NOT NULL,
-  `diskon` int(11) NOT NULL
+  `disc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `diskon`
+--
+
+INSERT INTO `diskon` (`id_diskon`, `id_produk`, `nama_diskon`, `disc`) VALUES
+(2, 1, 'Sale!', 5);
 
 -- --------------------------------------------------------
 
@@ -74,6 +97,13 @@ CREATE TABLE `kupon` (
   `potongan_harga` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `kupon`
+--
+
+INSERT INTO `kupon` (`id_kupon`, `nama_kupon`, `deskripsi_kupon`, `potongan_harga`) VALUES
+(2, 'Weekend', 'Kupon untuk kamu yang setia', '50000');
+
 -- --------------------------------------------------------
 
 --
@@ -86,8 +116,16 @@ CREATE TABLE `pelanggan` (
   `alamat` text NOT NULL,
   `no_hp` varchar(15) NOT NULL,
   `username` varchar(125) NOT NULL,
-  `password` varchar(125) NOT NULL
+  `password` varchar(125) NOT NULL,
+  `level_member` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pelanggan`
+--
+
+INSERT INTO `pelanggan` (`id_pelanggan`, `nama_pelanggan`, `alamat`, `no_hp`, `username`, `password`, `level_member`) VALUES
+(1, 'Pelanggan 1', 'Kuningan, Jawa Barat', '089987654543', 'pelanggan', 'pelanggan', 1);
 
 -- --------------------------------------------------------
 
@@ -102,6 +140,13 @@ CREATE TABLE `penilaian` (
   `rating` int(11) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `penilaian`
+--
+
+INSERT INTO `penilaian` (`id_penilaian`, `id_transaksi`, `review`, `rating`, `time`) VALUES
+(1, 1, 'bagus banget', 3, '2024-07-10 23:54:52');
 
 -- --------------------------------------------------------
 
@@ -119,6 +164,13 @@ CREATE TABLE `produk` (
   `stok` int(11) NOT NULL,
   `foto` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produk`
+--
+
+INSERT INTO `produk` (`id_produk`, `nama_produk`, `deskripsi`, `keterangan`, `harga`, `kategori_produk`, `stok`, `foto`) VALUES
+(1, 'SDSD ed', 'asas', 'pcs', '95000', 'hjhjh', 998, '2.jpg');
 
 -- --------------------------------------------------------
 
@@ -141,6 +193,13 @@ CREATE TABLE `transaksi` (
   `alamat_pengiriman` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id_transaksi`, `id_pelanggan`, `id_kupon`, `tgl_transaksi`, `total_transaksi`, `total_pembayaran`, `ongkir`, `stat_transaksi`, `bukti_payment`, `metode_pembayaran`, `metode_pengiriman`, `alamat_pengiriman`) VALUES
+(1, 1, 0, '2024-07-06', '190000', '197000', '7000', 4, 'download1.jpeg', 0, 0, 'Kuningan, Jawa Barat Kuningan Jawa Barat 1-2 Hari jne');
+
 -- --------------------------------------------------------
 
 --
@@ -154,6 +213,14 @@ CREATE TABLE `user` (
   `password` varchar(125) NOT NULL,
   `level_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `level_user`) VALUES
+(1, 'Admin', 'admin', 'admin', 1),
+(3, 'Pemilik', 'pemilik', 'pemilik', 2);
 
 --
 -- Indexes for dumped tables
@@ -221,55 +288,55 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `chatting`
 --
 ALTER TABLE `chatting`
-  MODIFY `id_chatting` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_chatting` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `detail_tran`
 --
 ALTER TABLE `detail_tran`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `diskon`
 --
 ALTER TABLE `diskon`
-  MODIFY `id_diskon` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_diskon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `kupon`
 --
 ALTER TABLE `kupon`
-  MODIFY `id_kupon` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kupon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `penilaian`
 --
 ALTER TABLE `penilaian`
-  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penilaian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

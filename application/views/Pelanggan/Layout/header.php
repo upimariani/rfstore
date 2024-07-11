@@ -57,15 +57,11 @@
 									<a href="<?= base_url('Pelanggan/cChatting') ?>">Chatting <span class="badge bg-warning"><?= $notif ?></span></a>
 								</li>
 								<li> <strong>
-										<?= $this->session->userdata('nama') ?></strong>, <small>Level member anda adalah <strong><?php if ($this->session->userdata('level') == '1') {
-																																		echo 'Low';
-																																	} else if ($this->session->userdata('level') == '2') {
-																																		echo 'Common';
-																																	} else if ($this->session->userdata('level') == '3') {
-																																		echo 'High';
-																																	} else if ($this->session->userdata('level') == '4') {
-																																		echo 'Ultra High';
-																																	}  ?></strong></small>
+										<?= $this->session->userdata('nama') ?></strong>, <small> <strong><?php if ($this->session->userdata('level') == '0') {
+																												echo 'Non Member';
+																											} else if ($this->session->userdata('level') == '1') {
+																												echo 'Member';
+																											}   ?></strong></small>
 								</li>
 							<?php
 							}

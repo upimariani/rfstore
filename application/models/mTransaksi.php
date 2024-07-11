@@ -10,7 +10,7 @@ class mTransaksi extends CI_Model
 	}
 	public function detail_transaksi_pelanggan($id_transaksi)
 	{
-		$data['detail_transaksi'] = $this->db->query("SELECT * FROM `transaksi` JOIN detail_tran ON transaksi.id_transaksi=detail_tran.id_transaksi JOIN produk ON produk.id_produk=detail_tran.id_produk WHERE transaksi.id_transaksi='" . $id_transaksi . "'")->result();
+		$data['detail_transaksi'] = $this->db->query("SELECT * FROM `transaksi` JOIN detail_tran ON transaksi.id_transaksi=detail_tran.id_transaksi JOIN produk ON produk.id_produk=detail_tran.id_produk LEFT JOIN diskon ON diskon.id_produk=produk.id_produk WHERE transaksi.id_transaksi='" . $id_transaksi . "'")->result();
 		$data['transaksi'] = $this->db->query("SELECT * FROM `transaksi` JOIN pelanggan ON transaksi.id_pelanggan=pelanggan.id_pelanggan WHERE id_transaksi='" . $id_transaksi . "'")->row();
 		return $data;
 	}

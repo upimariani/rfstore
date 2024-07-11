@@ -53,7 +53,7 @@
 										<img src="<?= base_url('asset/ashion-master/') ?>img/blog/details/comment-3.jpg" alt="">
 									</div>
 									<div class="blog__comment__item__text">
-										<h6><?= $value->nm_pel ?></h6>
+										<h6><?= $value->nama_pelanggan ?></h6>
 										<p><?= $value->pelanggan_send ?></p>
 										<ul>
 											<li><i class="fa fa-clock-o"></i> <?= $value->time ?></li>

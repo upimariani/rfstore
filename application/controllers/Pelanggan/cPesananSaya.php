@@ -71,11 +71,12 @@ class cPesananSaya extends CI_Controller
 	public function kritik_saran($id)
 	{
 		$data = array(
-			'isi_kritik_saran' => $this->input->post('kritik_saran'),
-			'id_po' => $id
+			'review' => $this->input->post('kritik_saran'),
+			'rating' => $this->input->post('rating'),
+			'id_transaksi' => $id
 		);
-		$this->db->insert('kritik_saran', $data);
-		$this->session->set_flashdata('success', 'Kritik dan Saran Berhasil Dikirim!');
+		$this->db->insert('penilaian', $data);
+		$this->session->set_flashdata('success', 'Review dan rating Berhasil Dikirim!');
 		redirect('Pelanggan/cPesananSaya/detail_pesanan/' . $id, 'refresh');
 	}
 	public function batalkan_pesanan($id)
