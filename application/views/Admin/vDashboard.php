@@ -106,6 +106,51 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-lg-8">
+				<div class="card">
+					<div class="card-header">
+						<h4>Informasi Pelanggan Level Member</h4>
+					</div>
+					<div class="card-block">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>No.</th>
+									<th>Nama</th>
+									<th>Alamat</th>
+									<th>Level Member</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php
+								$no = 1;
+								$pelanggan = $this->db->query("SELECT * FROM `pelanggan`")->result();
+								foreach ($pelanggan as $key => $value) {
+								?>
+									<tr>
+										<td><?= $no++ ?></td>
+										<td><?= $value->nama_pelanggan ?></td>
+										<td><?= $value->alamat ?></td>
+										<td><?php if ($value->level_member == '1') {
+											?>
+												<span class="badge badge-success">Member</span>
+											<?php
+											} else {
+											?>
+												<span class="badge badge-danger">Non Member</span>
+											<?php
+											} ?>
+										</td>
+									</tr>
+								<?php
+								}
+								?>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 
 		</div>
 		<!-- 1-3-block row end -->

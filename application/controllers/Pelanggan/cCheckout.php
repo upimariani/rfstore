@@ -4,22 +4,40 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class cCheckout extends CI_Controller
 {
 
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->model('mKupon');
+	}
+
 	public function index()
 	{
+		$data = array(
+			'kupon' => $this->mKupon->select()
+		);
 		$this->load->view('Pelanggan/Layout/head');
 		$this->load->view('Pelanggan/Layout/header');
-		$this->load->view('Pelanggan/vCheckout');
+		$this->load->view('Pelanggan/vCheckout', $data);
 	}
 	public function order()
 	{
-
-
-
+		$kupon = $this->input->post('kupon');
+		if ($kupon != '') {
+			$id_kupon = $kupon;
+			$potongan = $this->db->query("SELECT * FROM `kupon` WHERE id_kupon='" . $kupon . "'")->row();
+			$bayar = $this->input->post('total_bayar') - $potongan->potongan_harga;
+		} else {
+			$id_kupon = '0';
+			$bayar = $this->input->post('total_bayar');
+		}
+		// echo $kupon;
+		// echo $bayar;
 		$data = array(
 			'id_pelanggan' => $this->session->userdata('id_pelanggan'),
+			'id_kupon' => $id_kupon,
 			'tgl_transaksi' => date('Y-m-d'),
 			'total_transaksi' => $this->cart->total(),
-			'total_pembayaran' => $this->input->post('total_bayar'),
+			'total_pembayaran' => $bayar,
 			'ongkir' => $this->input->post('ongkir'),
 			'stat_transaksi' => '0',
 			'bukti_payment' => '0',

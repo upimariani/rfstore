@@ -46,7 +46,7 @@
 
 						<?php
 						foreach ($pesan as $key => $value) {
-							if ($value->pelanggan_send != NULL) {
+							if ($value->pelanggan_send != '0') {
 						?>
 								<div class="blog__comment__item">
 									<div class="blog__comment__item__pic">
@@ -62,7 +62,7 @@
 									</div>
 								</div>
 							<?php
-							} else if ($value->admin_send != NULL) {
+							} else if ($value->admin_send != '0') {
 							?>
 								<div class="blog__comment__item blog__comment__item--reply">
 									<div class="blog__comment__item__pic">

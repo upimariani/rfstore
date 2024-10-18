@@ -21,7 +21,7 @@ class cChatting extends CI_Controller
 				'stat_read' => '1'
 			);
 			$this->db->where('id_pelanggan', $this->session->userdata('id_pelanggan'));
-			$this->db->where('pelanggan_send', NULL);
+			$this->db->where('pelanggan_send=0');
 			$this->db->update('chatting', $data_notif);
 
 			$data = array(

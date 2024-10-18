@@ -56,6 +56,10 @@
 	</section>
 </aside>
 <!-- Sidebar chat start -->
+<?php
+//chatting pelanggan
+$chatting = $this->db->query("SELECT * FROM `chatting` JOIN pelanggan ON pelanggan.id_pelanggan=chatting.id_pelanggan GROUP BY pelanggan.id_pelanggan")->result();
+?>
 <div id="sidebar" class="p-fixed header-users showChat">
 	<div class="had-container">
 		<div class="card card_main header-users-main">
@@ -76,69 +80,28 @@
 
 				</div>
 				<div class="main-friend-list">
-					<div class="media friendlist-box" data-id="1" data-status="online" data-username="Josephin Doe" data-toggle="tooltip" data-placement="left" title="Josephin Doe">
+					<?php
+					foreach ($chatting as $key => $value) {
+					?>
+						<div class="media friendlist-box" data-id="1" data-status="online" data-username="<?= $value->nama_pelanggan ?>" data-toggle="tooltip" data-placement="left" title="<?= $value->nama_pelanggan ?>">
 
-						<a class="media-left" href="#!">
-							<img class="media-object img-circle" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-							<div class="live-status bg-success"></div>
-						</a>
-						<div class="media-body">
-							<div class="friend-header">Josephin Doe</div>
-							<span>20min ago</span>
+							<a class="media-left" href="<?= base_url('Admin/cChatting/chat/' . $value->id_pelanggan) ?>">
+								<img class="media-object img-circle" src="<?= base_url('asset/quantam-lite/') ?>assets/images/avatar-1.png" alt="Generic placeholder image">
+								<div class="live-status bg-success"></div>
+							</a>
+							<div class="media-body">
+								<div class="friend-header"><?= $value->nama_pelanggan ?></div>
+								<span><?= $value->time ?></span>
+							</div>
 						</div>
-					</div>
+					<?php
+					}
+					?>
+
 
 				</div>
 			</div>
 		</div>
 	</div>
 
-</div>
-<div class="showChat_inner">
-	<div class="media chat-inner-header">
-		<a class="back_chatBox">
-			<i class="icofont icofont-rounded-left"></i> Josephin Doe
-		</a>
-	</div>
-	<div class="media chat-messages">
-		<a class="media-left photo-table" href="#!">
-			<img class="media-object img-circle m-t-5" src="assets/images/avatar-1.png" alt="Generic placeholder image">
-			<div class="live-status bg-success"></div>
-		</a>
-		<div class="media-body chat-menu-content">
-			<div class="">
-				<p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
-				<p class="chat-time">8:20 a.m.</p>
-			</div>
-		</div>
-	</div>
-	<div class="media chat-messages">
-		<div class="media-body chat-menu-reply">
-			<div class="">
-				<p class="chat-cont">I'm just looking around. Will you tell me something about yourself?</p>
-				<p class="chat-time">8:20 a.m.</p>
-			</div>
-		</div>
-		<div class="media-right photo-table">
-			<a href="#!">
-				<img class="media-object img-circle m-t-5" src="assets/images/avatar-2.png" alt="Generic placeholder image">
-				<div class="live-status bg-success"></div>
-			</a>
-		</div>
-	</div>
-	<div class="media chat-reply-box">
-		<div class="md-input-wrapper">
-			<input type="text" class="md-form-control" id="inputEmail" name="inputEmail">
-			<label>Share your thoughts</label>
-			<span class="highlight"></span>
-			<span class="bar"></span> <button type="button" class="chat-send waves-effect waves-light">
-				<i class="icofont icofont-location-arrow f-20 "></i>
-			</button>
-
-			<button type="button" class="chat-send waves-effect waves-light">
-				<i class="icofont icofont-location-arrow f-20 "></i>
-			</button>
-		</div>
-
-	</div>
 </div>

@@ -22,7 +22,7 @@
 						<li class="pc-rheader-submenu ">
 							<a href="#!" class="drop icon-circle displayChatbox">
 								<i class="icon-bubbles"></i>
-								<span class="badge badge-danger header-badge">5</span>
+								<!-- <span class="badge badge-danger header-badge"></span> -->
 							</a>
 
 						</li>

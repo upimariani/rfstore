@@ -118,7 +118,12 @@
 								<tr>
 									<th>&nbsp;</th>
 									<th>&nbsp;</th>
-									<th>Total </th>
+									<th>Total <?php if ($detail['transaksi']->id_kupon != '0') {
+												?>
+											<small class="text-danger">Potongan Kupon</small>
+										<?php
+												} ?>
+									</th>
 									<th class="text-right">Rp. <?= number_format($detail['transaksi']->total_pembayaran) ?></th>
 								</tr>
 							</tfoot>

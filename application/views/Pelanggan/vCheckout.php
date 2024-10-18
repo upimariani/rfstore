@@ -96,7 +96,21 @@
 								<li>Total <span id="total_bayar"> </span></li>
 							</ul>
 						</div>
+						<div class="checkout__order__widget">
+							<?php foreach ($kupon as $key => $value) {
+							?>
+								<label for="o-acc">
+									Kupon <strong><?= $value->nama_kupon ?></strong>?
+									<input name="kupon" type="checkbox" id="o-acc" value="<?= $value->id_kupon ?>">
+									<span class="checkmark"></span>
+								</label>
+								<p><strong><?= $value->deskripsi_kupon ?></strong> yaitu mendapatkan potongan harga sebesar <strong>Rp. <?= number_format($value->potongan_harga) ?></strong></p>
+							<?php
+							}
+							?>
 
+
+						</div>
 						<input type="hidden" name="estimasi">
 						<input type="hidden" name="ongkir">
 

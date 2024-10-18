@@ -45,8 +45,8 @@
 									$terakhir_chat = $this->db->query("SELECT * FROM `chatting` WHERE id_pelanggan='" . $this->session->userdata('id_pelanggan') . "' ORDER BY time DESC LIMIT 1")->row();
 									if ($terakhir_chat) {
 
-										if ($terakhir_chat->admin_send != NULL) {
-											$notif_chatting = $this->db->query("SELECT COUNT(id_chatting) as notif FROM `chatting` WHERE stat_read = 0 AND pelanggan_send is NULL AND id_pelanggan='" . $this->session->userdata('id_pelanggan') . "'")->row();
+										if ($terakhir_chat->admin_send != '0') {
+											$notif_chatting = $this->db->query("SELECT COUNT(id_chatting) as notif FROM `chatting` WHERE stat_read = 0 AND pelanggan_send='0' AND id_pelanggan='" . $this->session->userdata('id_pelanggan') . "'")->row();
 											$notif = $notif_chatting->notif;
 										} else {
 											$notif = 0;
